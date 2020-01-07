@@ -18,13 +18,20 @@ class InstaBot:
         time.sleep(10)
         self.driver.find_element_by_xpath('//button[contains(text(),"Ahora no")]').click()
         time.sleep(6)
-        
-            
+
+
     def get_unfollowers(self):
         self.driver.find_element_by_xpath('//a[contains(@href,"/{}")]'.format(self.username)).click()
         time.sleep(5)
         self.driver.find_element_by_xpath('//a[contains(@href, "/{}/following/")]'\
                    .format(self.username)).click()
+        following = self._get_names()
+
+        self.driver.find_element_by_xpath('//a[contains(@href, "/{}/followers/")]'\
+                   .format(self.username)).click()
+        followers = self._get_names()
+
+    def _get_names(self):
         #sugs =self.driver.find_element_by_xpath('//h4[contains(text(),Suggestions)]')
         time.sleep(5)
         #self.driver.execute_scripts('arguments[0].scrollIntoView()',sugs)
@@ -41,6 +48,7 @@ class InstaBot:
         names = [name.text for name in links if name.text != '']
         print(names)
         self.driver.find_element_by_xpath('/html/body/div[4]/div/div[1]/div/div[2]/button').click()
+
 
 if __name__ == '__main__':
     my_bot = InstaBot(USERNAME,PW)
