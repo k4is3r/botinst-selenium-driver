@@ -22,16 +22,18 @@ class InstaBot:
             
     def get_unfollowers(self):
         self.driver.find_element_by_xpath('//a[contains(@href,"/{}")]'.format(self.username)).click()
-        self.driver.find_element_by_xpath('//a[contains(@href, "/seguidores")]')\
-                   .click()
-        sugs =self.driver.find_element_by_xpath('//h4[contains(text(),Suggestions)]')
-        self.driver.execute_scripts('arguments[0].scrollIntoView()',sugs)
-        scroll_box = self.driver.find_element_by_xpath('/html/body/div[3]/div/div[2]')
+        time.sleep(5)
+        self.driver.find_element_by_xpath('//a[contains(@href, "/{}/following/")]'\
+                   .format(self.username)).click()
+        #sugs =self.driver.find_element_by_xpath('//h4[contains(text(),Suggestions)]')
+        time.sleep(5)
+        #self.driver.execute_scripts('arguments[0].scrollIntoView()',sugs)
+        scroll_box = self.driver.find_element_by_xpath('/html/body/div[4]/div/div[2]')
         last_h, ht = 0, 1
         while last_h != ht:
             last_h = ht
             time.sleep(3)
-            ht = self.driver.execute_scripts("""
+            ht = self.driver.execute_script("""
                  arguments[0].scrollTo(0, arguments[0].scrollHeight);
                  return arguments[0].scrollHeight;
                  """, scroll_box)
@@ -39,3 +41,4 @@ class InstaBot:
 
 if __name__ == '__main__':
     my_bot = InstaBot(USERNAME,PW)
+    my_bot.get_unfollowers()
