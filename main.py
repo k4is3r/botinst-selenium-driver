@@ -14,7 +14,8 @@ class InstaBot:
         self.driver.find_element_by_xpath('//input[@name=\'username\']').send_keys(username)
         self.driver.find_element_by_xpath('//input[@name=\'password\']').send_keys(pw)
         self.driver.find_element_by_xpath('//button[@type="submit"]').click()
-        time.sleep(5)
-
+        time.sleep(10)
+        self.driver.find_element_by_xpath('//button[contains(text(),"Ahora no")]').click()
+        time.sleep(6)
 if __name__ == '__main__':
     InstaBot(USERNAME,PW)
