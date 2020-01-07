@@ -4,7 +4,9 @@ from selenium import webdriver
 
 class InstaBot:
     def __init__(self):
-        self.driver = webdriver.Chrome('./chromedriver')
+        self.chrome_options = webdriver.ChromeOptions()
+        self.chrome_options.add_argument('--incognito')
+        self.driver = webdriver.Chrome('./chromedriver',options=self.chrome_options)
         self.driver.get('https://instagram.com') 
 
 
