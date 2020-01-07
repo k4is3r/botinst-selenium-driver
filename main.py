@@ -4,6 +4,7 @@ import time
 
 class InstaBot:
     def __init__(self, username, pw):
+        self.username = username
         self.chrome_options = webdriver.ChromeOptions()
         self.chrome_options.add_argument('--incognito')
         self.driver = webdriver.Chrome('./chromedriver',options=self.chrome_options)
@@ -17,5 +18,12 @@ class InstaBot:
         time.sleep(10)
         self.driver.find_element_by_xpath('//button[contains(text(),"Ahora no")]').click()
         time.sleep(6)
+        
+    def get_unfollowers(self):
+        self.driver.find_element_by_xpath('//a[contains(@href,"/{}")]'.format(self.username)).cli        
+    def get_unfollowers(self):
+        self.driver.find_element_by_xpath('//a[contains(@href,"/{}")]'.format(self.username)).click()
+
+
 if __name__ == '__main__':
-    InstaBot(USERNAME,PW)
+    my_bot = InstaBot(USERNAME,PW)
