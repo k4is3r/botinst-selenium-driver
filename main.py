@@ -4,5 +4,9 @@ from selenium import webdriver
 
 class InstaBot:
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome('./chromedriver')
         self.driver.get('https://instagram.com') 
+
+
+if __name__ == '__main__':
+    InstaBot()
