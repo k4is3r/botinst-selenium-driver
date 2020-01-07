@@ -30,6 +30,8 @@ class InstaBot:
         self.driver.find_element_by_xpath('//a[contains(@href, "/{}/followers/")]'\
                    .format(self.username)).click()
         followers = self._get_names()
+        not_following_back = [user for user in following if user not in followers]
+        print(not_following_back)
 
     def _get_names(self):
         #sugs =self.driver.find_element_by_xpath('//h4[contains(text(),Suggestions)]')
@@ -46,9 +48,9 @@ class InstaBot:
                  """, scroll_box)
         links = scroll_box.find_elements_by_tag_name('a')
         names = [name.text for name in links if name.text != '']
-        print(names)
+        #print(names)
         self.driver.find_element_by_xpath('/html/body/div[4]/div/div[1]/div/div[2]/button').click()
-
+        return names
 
 if __name__ == '__main__':
     my_bot = InstaBot(USERNAME,PW)
