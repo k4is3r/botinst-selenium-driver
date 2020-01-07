@@ -3,4 +3,5 @@ chromedriver
 .main.py.swp
 chromedriver80.zip
 chromedriver79.zip
-
+secrets.py
+__pycache__/
