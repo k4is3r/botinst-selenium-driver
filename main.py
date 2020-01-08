@@ -31,7 +31,15 @@ class InstaBot:
                    .format(self.username)).click()
         followers = self._get_names()
         not_following_back = [user for user in following if user not in followers]
-        print(not_following_back)
+        followers_count = len(followers)
+        following_count = len(following)
+        not_following_back_count = len(not_following_back)
+        print(f'You have {followers_count} followers in {self.username} account')
+        print(f'You are following {following_count} users in {self.username} account')
+        print(f'The users that not following you are {not_following_back_count} users')
+        print('This is the list of users are note following you')
+        for user in not_following_back:
+            print(f' User: {user}')
 
     def _get_names(self):
         #sugs =self.driver.find_element_by_xpath('//h4[contains(text(),Suggestions)]')
