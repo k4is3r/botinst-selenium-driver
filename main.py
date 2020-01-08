@@ -40,6 +40,9 @@ class InstaBot:
         print('This is the list of users are note following you')
         for user in not_following_back:
             print(f' User: {user}')
+        self.driver.quit()
+
+
 
     def _get_names(self):
         #sugs =self.driver.find_element_by_xpath('//h4[contains(text(),Suggestions)]')
